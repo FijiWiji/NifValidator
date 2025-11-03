@@ -34,7 +34,15 @@ pipeline {
                         docker login -u ${username} -p ${passwd}
                         docker push ${username}/${JOB_BASE_NAME}
                         """
-                    }
+                }
+            }
+        }
+
+        stage ('Deploy'){
+            steps {
+                sh"""
+                ssh redhat@172.31.43.117 docker --version
+                """
             }
         }
     }
