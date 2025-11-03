@@ -26,11 +26,13 @@ pipeline {
             steps {
                 withCredentials([usernamePassword(
                     credentialsId: 'docker-id',
-                    passwordVariable: 'passwd', usernameVariable: 'username')]) {
+                    passwordVariable: 'passwd',
+                    usernameVariable: 'username')]) {
                         sh"""
-                        docker build -t ${username}/nif-validator .
+                        printenv
+                        docker build -t ${username}/${JOB_BASE_NAME} .
                         docker login -u ${username} -p ${passwd}
-                        docker push ${username}/nif-validator
+                        docker push ${username}/${JOB_BASE_NAME}
                         """
                     }
             }
