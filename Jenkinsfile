@@ -21,5 +21,13 @@ pipeline {
                 """
             }
         }
+
+        stage ('Build'){
+            steps {
+                sh"""
+                docker build -t blsphmy/nif-validator .
+                """
+            }
+        }
     }
 }
