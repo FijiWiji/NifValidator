@@ -143,12 +143,13 @@ pipeline {
             }
         }
     }
+
     post {
         success {
             echo 'Pipeline completed successfully!'
         }
         failure {
-            mail to: 'cfreire@cfreire.com.pt',
+            mail to: 'mail@gmail.com',
             subject: "Failed pipeline: ${currentBuild.fullDisplayName}",
             body: "You really mess things up!"
         }
